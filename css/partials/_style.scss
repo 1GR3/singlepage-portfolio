@@ -1,0 +1,362 @@
+/*=============================================================
+              STYLES COMMON TO SITE & BLOG
+==============================================================*/
+
+/* Colors
+==============================================================*/
+
+.brown      { color: $brown; }
+.orange     { color: $orange; }
+.red        { color: $red; }
+.pink       { color: $pink; }
+.purple     { color: $purple; }
+.black      { color: $black; }
+.blue       { color: $blue; }
+.blue-light { color: $blue-light; }
+.green      { color: $green; }
+.green-dark { color: $green-dark; }
+.gray       { color: $gray; }
+
+/* Layout
+==============================================================*/
+ 
+.container { 
+ max-width: 1024px;
+ padding: 0;
+ @include breakpoint(tablet-land) { width: 94%; } 
+ @include breakpoint(tablet)      { width: 92%; } 
+ @include breakpoint(mobile-land) { width: 90%; } 
+ @include breakpoint(mobile)      { width: 85%; }
+}
+
+.grid {
+ margin: 0 -3%;
+ @include breakpoint(tablet-land) { margin: 0 -3%; }
+ @include breakpoint(tablet)      { margin: 0 -4%; }
+ @include breakpoint(mobile-land) { margin: 0 -5%; }
+ @include breakpoint(mobile)      { margin: 0 -5%; }
+
+ > li {
+  padding: 0 3%;
+  @include breakpoint(tablet-land) { padding: 0 3%; }
+  @include breakpoint(tablet)      { padding: 0 4%; }
+  @include breakpoint(mobile-land) { padding: 0 5%; }
+  @include breakpoint(mobile)      { padding: 0 5%; }  
+ }
+
+}
+
+/* Header & Footer
+==============================================================*/
+
+// Header
+
+.header-nav h1.logo img {
+ width: 238px;
+ @include breakpoint(tablet)      { width: 210px; }
+}
+
+.header-sign-up {
+ display: block;
+ float: right;
+ color: $gray-light;
+ font-family: $sub-heading-font;
+ @include font-size(14);
+ font-weight: 400;
+}
+
+.header-bar {
+ float: left;
+ width: 100%;
+ max-height: 32px;
+ @include breakpoint(mobile-both) { 
+  position: fixed;
+  z-index: 2;
+  top: $hdr-ht-mobile;
+  left: 0;
+  width: 100%; 
+ }
+}
+
+// .header-bar {
+//  background-image: url('../img/headers/header-bar-main_2400x63.png');
+//  @include bg-size(100% auto); 
+//  height: 32px;
+//  @include breakpoint(tablet)      { height: 24px; }
+//  @include breakpoint(mobile-both) { height: 12px; }
+// }
+
+// Footer 
+
+.footer_big {
+
+ .main {
+  padding-bottom: 200px; 
+  @include breakpoint(mobile-both) { padding-bottom: $ftr-ht-mobile; }
+ }
+
+ .footer {
+  height: 200px;
+  @include breakpoint(mobile-both) { height: $ftr-ht-mobile; }
+ }
+
+}
+
+.footer {
+ padding-top: 32px;
+ background: $link-color;
+ color: $light-text;
+ @include breakpoint(mobile-both) { padding-top: 20px; }
+
+ a {
+  color: $light-text;
+  &:hover, &:active { color: $blue-x-light; }
+ }
+
+}
+
+.footer-title {
+ font-family: $sub-heading-font;
+ text-transform: uppercase;
+ @include font-size($size-small); 
+ color: $blue-x-light;
+}
+
+.footer .footer-title {
+ padding-bottom: 10px;
+ @include font-size(12); 
+}
+
+.footer-our-vision, .footer-contact, .footer-blog-posts, .footer-nav {
+ float: left;
+ margin-right: 3%;
+ @include breakpoint(tablet) { margin-right: 5%; }
+}
+
+.footer-our-vision { width: 40%; }
+.footer-contact    { width: 15%; }
+.footer-blog-posts { width: 24%; }
+.footer-nav        { width: 12%; margin-right: 0; }
+
+.footer-our-vision { @include breakpoint(tablet) { width: 55%; } }
+.footer-contact    { @include breakpoint(tablet) { width: 20%; } }
+.footer-nav { @include breakpoint(tablet) { width: 15%; } }
+
+.footer-our-vision {
+ @include font-size(18);
+}
+
+.footer-contact, .footer-blog-posts, .footer-nav, .footer-connect {
+
+ p { 
+  @include font-size(15);
+  margin-bottom: 5px;
+ }
+
+ .footer-copyright {
+  @include font-size(12);
+  margin-top: 12px;
+ }
+
+}
+
+.footer-connect {
+ float: left;
+ width: 50%;
+}
+
+.footer-blog-posts {
+
+ p { margin-bottom: 9px; }
+
+}
+
+.social-media-icons {
+
+ a { 
+  display: block;
+  float: left;
+  width: 27px;
+  margin-right: 9px;
+
+  &:hover, &:active {
+
+   img {
+    opacity: 0.5;
+   }
+
+  }
+
+ }
+
+ .footer & {
+  margin-top: 8px;
+ }
+
+ .footer-mobile & {
+  float: right;
+  margin-top: 35px;
+ }
+
+}
+
+// Minimal footer for internal pages
+
+.footer-min {
+ // height: 62px;
+ padding: 0;
+
+ .footer-min-links {
+  // float: left;
+  // width: 100%;
+  // width: auto;
+  float: left;
+  width: 85%;
+  margin-top: 21px;
+  @include breakpoint(tablet) { float: left; width: 100%; margin-top: 25px; }
+
+  li {
+   float: left;
+   font-weight: 300;
+   // @include font-size(15);
+   line-height: 18px;
+   margin-right: 6%;
+   @include breakpoint(tablet) { 
+    @include font-size(16); margin-right: 5%;
+   }
+
+   &.last {
+    @include font-size(12);
+    line-height: 18px;
+   }
+
+  }
+
+ }
+
+ .social-media-icons {
+  float: right;
+  margin: 17px 0 0;
+  @include breakpoint(tablet) { float: left; clear: left; margin-top: 25px; }
+ }
+
+
+}
+
+/* Mobile Header & Navigation Sidebar
+==============================================================*/
+
+.mobile-site-header {
+ height: $hdr-ht-mobile;
+ background: #fff;
+ // background: rgba(255, 255, 255, 0.85);
+ opacity: 1;
+ visibility: visible; 
+
+ .mobile-header-nav {
+  width: 100%;
+  height: $hdr-ht-mobile; line-height: $hdr-ht-mobile;
+  @include breakpoint(tablet)     { height: $hdr-ht-tablet; line-height: $hdr-ht-tablet; }
+ }
+
+ .mobile-logo, .mobile-btn {
+  @include inline-block;
+ }
+
+ .mobile-logo { 
+  width: 65%;
+  margin-right: 10%;
+  text-align: left;
+  // @include font-size(1);
+  line-height: 1.0;
+
+  img {
+   @include breakpoint(tablet)      { max-width: 210px; }
+   @include breakpoint(mobile-land) { max-width: 190px; }
+   @include breakpoint(mobile)      { max-width: 184px; }
+  }
+
+ }
+
+ .mobile-btn { 
+  width: 25%;
+  text-align: right;
+ } 
+
+}
+
+.menu-btn, .close-btn {
+ background: none;
+ padding: 17px 12px;
+ margin-right: -12px;
+
+ &:hover, &:active { background: none; }
+
+ img {
+  @include breakpoint(tablet)      { width: 28px; }
+  @include breakpoint(mobile-both) { width: 22px; }
+  // @include breakpoint(mobile)      { width: 22px; }
+ }
+
+}
+
+.close-btn {
+ margin: 0;
+ padding-left: 0;
+}
+
+.st-menu {
+ background: $link-color;
+}
+
+.sidebar-site {
+ 
+ a {
+  color: $light-text;
+  &:hover, &:focus { color: $blue-x-light; }
+ }
+
+}
+
+.sidebar-site-close {
+ width: 100%;
+ padding: 0 15px;
+ border-bottom: 1px solid $gray;
+ height: $hdr-ht-mobile; line-height: $hdr-ht-mobile; 
+ @include breakpoint(tablet)     { height: $hdr-ht-tablet; line-height: $hdr-ht-tablet; }
+}
+
+.sidebar-site-signup {
+ display: block;
+ float: right;
+ font-family: $sub-heading-font;
+ font-weight: 300;
+ @include font-size(13);
+ padding-top: 6px;
+ height: 100%;
+}
+
+.sidebar-site-connect {
+ float: left;
+ width: 100%;
+ padding: 40px 15px 30px;
+
+ p { 
+  @include font-size($size-small);
+  color: $light-text;
+  margin-top: 4px;
+ }
+
+}
+
+.sidebar-site-copyright {
+ width: 100%;
+ padding: 0 40px 40px 0;
+ text-align: right;
+ @include font-size($size-x-small);
+ color: $light-text;
+}
+
+.sidebar-site .social-media-icons {
+ margin-top: 10px;
+}

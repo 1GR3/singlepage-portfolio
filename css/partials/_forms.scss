@@ -1,0 +1,567 @@
+/*=============================================================
+              FORMS
+==============================================================*/
+
+/* Resets for older browsers (not included in other resets)
+==============================================================*/
+
+button,
+input,
+select,
+textarea {
+ vertical-align: baseline; /* Improves appearance and consistency in all browsers */
+ *vertical-align: middle; /* Improves appearance and consistency in all browsers */
+}
+
+button,
+input,
+label {
+ *overflow: visible;  /* Corrects inner spacing displayed oddly in IE6/7 */
+}
+
+/* Form defaults
+==============================================================*/
+
+form {
+ float: left;
+ width: 100%;
+ margin: 0;
+}
+
+fieldset {
+ width: 100%;
+ padding: 0;
+ margin: 0;
+ border: 0;
+}
+
+legend {
+ display: block;
+ width: 100%;
+ padding: 0;
+ margin: 0;
+}
+
+label,
+select,
+textarea,
+input[type="text"],
+input[type="search"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="file"],
+input[type="tel"],
+input[type="color"],
+input[type="submit"],
+.input-comment,
+.input-value {
+ // @include inline-block;
+ float: left;
+ outline: none;
+ -webkit-appearance: none;
+}
+
+// input[type="text"],
+// input[type="search"],
+// input[type="password"],
+// input[type="datetime"],
+// input[type="datetime-local"],
+// input[type="date"],
+// input[type="month"],
+// input[type="time"],
+// input[type="week"],
+// input[type="number"],
+// input[type="email"],
+// input[type="url"],
+// input[type="file"],
+// input[type="tel"],
+// input[type="color"],
+select,
+textarea,
+input {
+ font-family: $sub-heading-font;
+ font-weight: 300; 
+ width: 100%;
+ height: 2.5em;
+ line-height: 2.5em;
+ padding: 0 15px;
+ border: 0;
+ color: $input-color;
+ background: $input-bg;
+ @include placeholder-color($placeholder);
+ @include border-radius(0);
+
+ .input-error & {
+  background: $error-bg;
+  color: #fff;
+  @include placeholder-color(#fff);
+  opacity: 1;
+ }
+
+ .input-wrapper &:focus, .input-wrapper &.input-value {
+  color: $input-focus;
+  @include placeholder-color($placeholder);
+  background: #fff;
+  padding-left: 14px;
+  padding-right: 14px;
+  border: 1px solid $input-border;
+ }
+
+}
+
+textarea {
+ line-height: 1.4em;
+ height: 9.4em;
+ padding-top: 9px;
+ padding-bottom: 9px;
+
+ .input-wrapper &:focus, .input-wrapper &.input-value {
+  padding-top: 8px;
+  padding-bottom: 8px;  
+ }
+
+}
+
+.form-error {
+ width: 100%;
+ padding: 0 15px;
+ line-height: 2.5;
+ font-family: $sub-heading-font;
+ font-weight: 700;
+ @include font-size(12); 
+ text-transform: uppercase;
+ color: $red;
+}
+
+.input-wrapper {
+ float: left;
+ width: 100%; 
+ margin-bottom: 20px;
+}
+
+%half-input {
+ width: 48.5%;
+}
+
+.input-half-left, .input-half-right {
+ @extend %half-input;
+ @include breakpoint(mobile-both) { width: 100%; }
+
+ + .form-error {
+  @extend %half-input;
+ }
+
+}
+
+.input-half-left {
+ margin-right: 3%;
+ @include breakpoint(mobile-both) { margin-right: 0; }
+}
+
+.input-comment {
+ float: left;
+ line-height: 1.2em;
+ width: 70%;
+ margin-left: 30%;
+ margin-top: 8px;
+ @include font-size($size-x-small);
+ color: #bbb;
+ @include breakpoint(mobile-both) { width: 100%; margin-left: 0; }
+
+ .input-value + & { margin-top: 0; }
+ 
+}
+
+span.required {
+ color: $error-color !important;
+}
+
+.input-error {
+
+ .hide {
+  display: block !important; 
+  visibility: visible;
+ }
+
+}
+
+
+/* Selects
+==============================================================*/
+
+.select-wrapper {
+ @include inline-block;
+ position: relative;
+ overflow: hidden;
+ background: $input-bg;
+ // background: url(img/dropdown-arrow_100x50.png) 95% center no-repeat $input-bg;
+ // @include bg-size(30px 15px);
+
+ select { 
+  width: 120%;
+  border: 0;
+  background: url(img/dropdown-arrow_100x50.png) 80% center no-repeat $input-bg;
+  @include bg-size(30px 15px);
+ 
+  &:focus { 
+   // background-color: #f9f9f9;
+  }
+
+ }
+
+ &.quarter-input {
+  width: 15%;
+  margin-right: 2.5%;
+  @include breakpoint(mobile-both) { width: 47.5%; margin: 0; }
+
+  label + & {
+   @include breakpoint(mobile-both) { margin-right: 5%; }
+  }
+
+  select {
+   background-position: 75% center;
+  }
+
+ } 
+
+}
+
+select {
+ line-height: 1.0;
+ padding: 0.3em 0.5em;
+ cursor: pointer;
+ -webkit-appearance: menulist-text;
+
+ &:focus {
+  background: $input-bg;
+  @include box-shadow-none;
+  // border: 0;
+  // background: none;
+ }
+
+}
+
+select[multiple] {
+ height: auto;
+}
+
+.select {
+ @include inline-block;
+ position: relative;
+}
+
+.select label {
+ position: absolute;
+ top: 0;
+ right: 0;
+ width: 30px;
+ background: $input-bg;
+ margin: 2px;
+
+ &:active, &:focus {
+  background: none;
+ }
+
+}
+
+.select select {
+ width: 100%;
+
+ &:focus + label {
+  background: #fff;
+ }
+
+}
+
+/* Checkboxes & Radio Buttons
+==============================================================*/
+
+// Checkboxes
+
+.checkbox-group {
+ float: left;
+ width: 100%; 
+
+ .form-error {
+  padding-left: 22px;
+ }
+
+}
+
+.checkbox-group-name, .file-upload-name {
+ font-family: $sub-heading-font;
+ font-weight: 700;
+ @include font-size(14);
+ line-height: 1.0;
+ color: $input-border;
+ margin: 0 0 12px 22px;
+}
+
+.file-upload-name {
+ margin-left: 0;
+}
+
+input[type="checkbox"], input[type="radio"] {
+ cursor: pointer;
+}
+
+input[type="checkbox"], input[type="radio"] {
+ visibility: hidden;
+ position: absolute;
+ top: 0;
+ left: -9999px;
+ width: 0;
+ height: 0;
+ padding: 0;
+ margin: 0;
+}
+
+.checkbox-label, .radio-label {
+ cursor: pointer;
+ position: relative;
+ display: block;
+ width: 100%;
+ height: auto;
+ margin: 0;
+ line-height: 1.0;
+ @include transition;
+
+ p {
+  line-height: 1.0 !important;
+  padding: 0;
+  margin: 0;
+  @include transition;
+  // @include font-size(15);
+ }
+
+}
+
+.checkbox-label-box {
+ float: left;
+ width: 12px;
+ height: 12px;
+ margin: 2px 10px 0 0;
+ background: $input-bg;
+ border: 0;
+}
+
+.checkbox-label-tick {
+ opacity: 0;
+ content: '';
+ position: absolute;
+ top: 4px;
+ left: 2px;
+ width: 8px;
+ height: 8px;
+ background: none;
+ // top: 5px;
+ // left: 4px;
+ // border: 3px solid $link-color;
+ // border-top: none;
+ // border-right: none;
+ // -webkit-transform: rotate(-45deg);
+ // -moz-transform: rotate(-45deg);
+ // -o-transform: rotate(-45deg);
+ // -ms-transform: rotate(-45deg);
+ // transform: rotate(-45deg);
+}
+
+.input-error {
+
+ .checkbox-label-box {
+  background: $error-bg;
+  border: 0;
+ }
+
+}
+
+input[type=checkbox]:checked + .checkbox-label,
+input[type=radio]:checked + .checkbox-label {
+
+ .checkbox-label-box {
+  background: #fff;
+  border: 1px solid $input-border;
+ }
+
+ .checkbox-label-tick {
+  background-image: url('../img/icons/checkbox-x_16x16.png');
+  @include bg-size(100% auto);
+  opacity: 1;
+ }
+
+}
+
+// .ie9 input[type=checkbox]:checked + .checkbox-label,
+// .ie9 input[type=radio]:checked + .checkbox-label {
+
+//  .checkbox-label-tick {
+//   background-image: url('../img/icons/checkbox-x_8x8.png');
+//  } 
+
+// }
+
+.input-checkbox-other {
+ width: 20%;
+ @include breakpoint(mobile) { width: 35%; }
+}
+
+.input-other {
+ margin-top: -11px;
+ width: 80%;
+ @include breakpoint(mobile) { width: 65%; }
+
+ .input-error & input {
+  background: $input-bg;
+ }
+
+}
+
+// Radio Buttons
+
+.radio-label-button {
+ float: left;
+ width: 21px;
+ height: 21px;
+ border: 1px solid #ddd;
+ @include border-radius(100%);
+ background: $bg-color-2;
+ margin: 0 10px 15px 0;
+ cursor: pointer;
+}
+
+.radio-label-tick {
+ opacity: 0.2;
+ content: '';
+ position: absolute;
+ top: 3px;
+ left: 3px;
+ width: 15px;
+ height: 15px;
+ @include border-radius(100%);
+ background: $link-color;
+}
+
+input[type="radio"]:checked + label {
+
+ .radio-label-tick {
+  opacity: 1;
+ }
+
+}
+
+/* File Upload
+==============================================================*/
+
+.file-upload-wrapper {
+ position: relative;
+ float: left;
+ width: 100%;
+ cursor: pointer;
+ cursor: hand;
+
+ .file-upload {
+  position: relative;
+  z-index: 1;
+ 
+  p {
+   display: block;
+   float: left;
+   font-family: $sub-heading-font;
+   @include font-size(11);
+   height: 24px;
+   line-height: 24px;
+   color: $link-color;
+   padding: 0px 8px;
+   border: 1px solid $link-color;
+   margin: 0 10px 0 0;
+  }
+
+  input[type="text"] {
+   width: auto;
+   font-family: $body-font;
+   @include font-size(13);
+   background: #fff;
+   color: $body-color;
+   height: 24px;
+   line-height: 24px;
+   padding: 0;
+   border: 0;
+   margin: 0;
+   overflow: hidden;
+  }
+
+ }
+
+ input[type="file"] {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;  
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  cursor: hand;
+ }
+
+}
+
+.input-file.input-error {
+
+ .form-error {
+  padding-left: 0;
+ }
+
+ .file-upload p {
+  border: 0;
+  background: $error-bg;
+  color: #fff;
+ }
+
+}
+
+/* Text Formatting In & Around Forms
+==============================================================*/
+
+.form-intro, .form-section {
+ float: left;
+ width: 100%;
+ @include padtopbot(0,30);
+
+ p:last-child { margin: 0; }
+
+}
+
+.form-section {
+ @include padtop(30);
+
+ h4 { margin: 0; }
+
+}
+
+.form-footer {
+ clear: both;
+}
+
+h1, h2, h3, h4, h5, h6 {
+
+ + form {
+  padding-top: 10px;
+ }
+
+}
+
+/* Centered Form
+==============================================================*/
+

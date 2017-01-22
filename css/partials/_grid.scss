@@ -1,0 +1,65 @@
+/*=============================================================
+              GRID
+==============================================================*/
+
+.grid, .grid .menu { 
+ @include clearfix;
+ margin: 0 -2.5%;
+
+ > li { 
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 2.5%;
+ }
+
+}
+
+.grid-2 > li { 
+ width: 50%;
+ @include breakpoint(mobile)      { width: 100%; }
+ @include breakpoint(mobile-land) { width: 100%; }
+ @include breakpoint(tablet)      { width: 50%; } 
+ @include breakpoint(tablet-land) { width: 50%; }  
+
+ &:nth-child(2n+1) {
+  clear: both;
+ }
+
+}
+
+.grid-3 > li {
+ width: 33.3333333%; 
+ @include breakpoint(mobile)      { width: 100%; }
+ @include breakpoint(mobile-land) { width: 50%; }
+ @include breakpoint(tablet)      { width: 33.3333333%; } 
+ @include breakpoint(tablet-land) { width: 33.3333333%; }  
+}
+
+.grid-3.only-3 > li:nth-child(3) { @include breakpoint(mobile-land)     { clear: left; margin-left: 25%; } }
+
+.grid-4 > li {
+ width: 25%;
+ @include breakpoint(mobile)      { width: 100%; }
+ @include breakpoint(mobile-land) { width: 50%; }
+ @include breakpoint(tablet)      { width: 25%; } 
+ @include breakpoint(tablet-land) { width: 25%; } 
+}
+
+.grid-5 > li {
+ width: 20%;
+ @include breakpoint(mobile)      { width: 100%; }
+ @include breakpoint(mobile-land) { width: 50%; } 
+ @include breakpoint(tablet)      { width: 20%; } 
+ @include breakpoint(tablet-land) { width: 20%; }
+}
+
+.grid-5.only-5 > li:nth-child(3) { @include breakpoint(mobile-land)     { clear: left; } }
+.grid-5.only-5 > li:nth-child(5) { @include breakpoint(mobile-land)     { clear: left; margin-left: 25%; } }
+
+.grid-6 > li {
+ width: 16.66667%;
+ @include breakpoint(tablet-land) { width: 16.66667%; }
+ @include breakpoint(tablet)      { width: 33.33333%; } 
+ @include breakpoint(mobile-both) { width: 33.33333%; }
+}

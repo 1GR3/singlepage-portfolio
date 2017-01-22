@@ -1,0 +1,260 @@
+/*=============================================================
+              FOOTER
+==============================================================*/
+
+/* General Footer Styles
+==============================================================*/
+
+.footer {
+ text-align: center;
+ color: $light-text;
+ @include font-size($size-small);
+ @include breakpoint(mobile-both) { @include font-size($size); }  
+
+ // .grid, .grid .menu { 
+ //  margin: 0; 
+ //  > li { padding: 0; }
+ // }
+
+ a:hover, a:focus {
+  color: $light-text;
+ }
+
+}
+
+ul.social-media-icons {
+ list-style: none outside;
+ @include inline-block; 
+ margin-right: 15px;
+
+ li {
+  float: left;
+  width: auto;
+  margin-left: 15px; 
+ }
+
+ a {
+  display: block;
+  width: 35px;
+  height: 35px;
+  text-indent: -9999px;
+  outline: 0;
+  background: url(images/social-media-icon-sprite_140x35.png) no-repeat 0 0;
+  @include opacity(1.0);
+
+  &.facebook { background-position: 0 0; }
+  &.twitter { background-position: -35px 0; }
+  &.pinterest { background-position: -70px 0; }
+  &.foursquare { background-position: -105px 0; }
+
+  &:hover, &:focus {
+   @include opacity(0.5);
+   // @include simple-transform ( 1.0, 0deg, 0px, -30px );
+  }
+
+ }
+
+}
+
+/* Mobile Footer
+==============================================================*/
+
+/* Used with both desktop footers below */
+
+.mobile-footer {
+ text-align: center;
+
+ .grid-2 {
+  margin: 0;
+  max-width: 320px;
+  @include inline-block;
+
+  > li {
+   width: 50%;
+   padding: 0;
+   text-align: center; 
+  }
+
+ }
+
+}
+
+
+/* Left Footer 
+==============================================================*/
+
+.footer-left {
+ @include padtopbot(50,0);
+ @include font-size($size);
+ @include breakpoint(mobile-both) { @include padtopbot(25,0); }
+ @include breakpoint(tablet)      { @include font-size($size); }
+
+ .footer-nav {
+  float: left;
+  width: 75%;
+  @include breakpoint(mobile-both) { width: 100%; text-align: center; }
+  @include breakpoint(tablet)      { width: 90%; } 
+
+  ul {
+   padding: 0 6%;
+   @include breakpoint(tablet)      { padding: 0; }
+   @include breakpoint(tablet-land) { padding: 0; }
+
+   li.footer-menu {
+    float: left; 
+    width: auto;
+    padding-right: 9%;
+    @include font-size($size-small);
+
+    &.footer-menu-4 {
+     padding-right: 0;
+    }
+
+    ul { padding: 0; }
+
+   }
+
+  }
+
+ }
+
+ .footer-social {
+  float: right;
+  text-align: center;
+  @include martop(50);
+  width: 25%;
+  @include breakpoint(mobile-both) { width: 100%; @include martopbot(0,17); }
+  @include breakpoint(tablet)      { width: 10%; margin-top: -7px; } 
+
+  ul.social-media-icons {
+
+   li {
+    @include breakpoint(tablet)      { margin-bottom: 15px; }
+   }
+
+   li.social-clear {
+    @include breakpoint(tablet)      { clear: left; }    
+   }
+
+  }
+
+ }
+
+}
+
+/* Centered Footer 
+==============================================================*/
+
+.footer-centered {
+
+ .footer-social {
+  width: 100%; 
+  @include marbot(35); 
+  text-align: center;
+ } 
+
+ .footer-subscribe {
+  @include clearfix;
+  width: 65%;
+  margin: 0 auto;
+  @include marbot(33);
+  @include breakpoint(mobile)      { width: 100%; }
+  @include breakpoint(mobile-land) { width: 100%; }
+  @include breakpoint(tablet)      { width: 80%; }
+
+  form {
+   width: 100%;
+   margin: 0;
+
+   input {
+    height: 35px;
+    @include font-size($size-small);    
+   }
+
+   input[type="email"] {
+    width: 75%;
+    margin: 0;
+    margin-right: 5%;
+    background: #fff;
+    border: 1px solid #fff;
+    line-height: 35px;
+    text-align: center;
+    @include placeholder-color(#595959);
+    @include padtopbot(0,0);
+    @include breakpoint(mobile)      { width: 100%; margin: 0; @include marbot(15); text-align: center; }
+    @include breakpoint(mobile-land) { width: 50%; margin: 0 25%; @include marbot(15); text-align: center; }
+   }
+
+   input[type="submit"] {
+    clear: none;
+    width: 20%;
+    min-width: 20%;
+    margin: 0;
+    @include breakpoint(mobile)      { width: 40%; margin: 0 30%; }
+    @include breakpoint(mobile-land) { width: 25%; margin: 0 37.5%; }
+   }
+  
+  }
+
+ }
+
+ .footer-nav {
+  clear: both;
+  margin: 0 auto;
+  @include marbot(25);
+  width: 70%;  
+  @include breakpoint(mobile)      { width: 100%; }
+  @include breakpoint(mobile-land) { width: 100%; }
+  @include breakpoint(tablet)      { width: 85%; }  
+
+  .grid li {
+   @include padbot(0);
+  }
+
+  .menu-title { 
+   color: $link-color;
+   text-align: center;
+   margin-bottom: 0;
+  }
+
+  ul.menu { margin: 0; }
+
+  ul.menu li {
+   text-align: center;
+   padding: 0;
+   margin: 0;
+  }
+
+ }
+
+ .footer-copyright {
+  width: 60%;
+  margin: 0 auto;
+  @include breakpoint(mobile)      { width: 100%; }
+  @include breakpoint(mobile-land) { width: 100%; }
+
+  p { 
+   text-align: center;
+   margin-bottom: 0;
+   color: $light-text;
+   @include breakpoint(mobile)      { text-align: center; }
+   @include breakpoint(mobile-land) { text-align: center; }
+  }
+
+ }
+
+ .footer-backtotop {
+  float: left;
+  width: 100%;
+  text-align: center;
+ 
+  a.btn {
+   @include font-size($size-x-small);
+   @include martopbot(30,0);
+   @include breakpoint(mobile)      { margin: 0 auto; @include martopbot(30,0); @include font-size($size-small); }
+   @include breakpoint(mobile-land) { margin: 0 auto; @include martopbot(30,0); @include font-size($size-small); } 
+  } 
+
+ } 
+
+}

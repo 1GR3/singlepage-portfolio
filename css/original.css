@@ -1,0 +1,26 @@
+#hs_holder{
+	background: url(../img/mWay.jpg);
+}
+#hs_holder ul li{
+	width: 25%;
+}
+#hs_holder ul li a .img_holder{
+	width: 128px;
+	height: 128px;
+}
+#hs_holder ul li a .img_holder img{
+	width: 96px;
+	height: 96px;
+	padding: 32px 16px 0;
+	transition: all .5s;
+}
+#hs_holder ul li a:hover .img_holder img{
+	width: 128px;
+	height: 128px;
+	padding: 0;
+}
+#hs_holder ul li span{
+	font-size: 12px;
+	color: white;
+	text-shadow: 0 1px 3px rgba(0,0,0,.7), 0 0px 1px rgba(0,0,0,.7);
+}

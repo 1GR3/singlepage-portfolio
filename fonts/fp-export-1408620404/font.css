@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Glober Thin';
+  src: url('Fontfabric - GloberThin.eot'); /* IE9 Compat Modes */
+  src: url('Fontfabric - GloberThin.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('Fontfabric - GloberThin.woff') format('woff'), /* Modern Browsers */
+       url('Fontfabric - GloberThin.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('Fontfabric - GloberThin.svg#71935c9a4807d8df052afb0f1d6867f6') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  200;
+}
+

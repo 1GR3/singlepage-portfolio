@@ -1,0 +1,419 @@
+/*=============================================================
+              SITE SIDEBAR
+==============================================================*/
+
+// This sidebear is only visible on mobile devices as a navigaton menu
+
+.sidebar-site {
+ @include clearfix;
+}
+
+.sidebar-site nav {
+ float: left;
+ width: 100%;
+
+ h1, h2, h3, h4, h5, h6, p { 
+  width: 100%;
+  margin: 0;
+ }
+
+ a { 
+  @include inline-block;
+  width: 100%;
+  padding: 5px 15px;
+  color: $light-text;
+  font-family: $sub-heading-font;
+  text-transform: uppercase;
+  @include font-size(14);
+ }
+
+ ul li {
+  float: left;
+  width: 100%;
+  clear: left;
+  position: relative;
+  border-bottom: 1px solid $gray;
+  margin: 0;
+ } 
+
+ .top-level {
+
+  > li {
+
+   .sub-level {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background: $link-color;
+    // background: rgba(46, 199, 116, 0.85);
+   }
+
+  }
+
+  > li:hover { 
+   
+   .sub-level {
+    display: block;
+    display: none;
+    @include breakpoint(mobile-both) { display: none; }
+   }
+
+  }
+
+  > li.current-section {
+
+   a { @include black-overlay(0.30); }
+   
+   .sub-level {
+    display: block;
+    position: relative;
+    top: auto;
+    left: auto;
+    float: left;
+    margin: -7px 0 0;
+    // padding-bottom: 5px;
+
+    > li {
+     border: 0;
+     @include font-size($size-x-small);
+
+     a {
+      padding: 2px 0 2px 30px;
+      @include breakpoint(tablet)      { padding-left: 25px; }
+
+      &:hover, &:active {
+       @include black-overlay(0.75);
+      }
+
+     }
+
+     &.current-item a { @include black-overlay(0.75); }
+
+    }
+
+   }
+
+  }
+
+ }
+
+}
+
+/*=============================================================
+              ORDER SIDEBAR
+==============================================================*/
+
+.sidebar-order {
+ @include clearfix;
+ padding: 20px;
+ // background: $bg-color-2;
+ 
+
+ .mobile-layout & {
+  // padding-bottom: 300px;
+ }
+
+ form {
+  padding: 0;
+  margin: 0;
+ }
+
+ li, p, label, input[type="text"], select, textarea {
+  @include font-size($size-x-small);
+ }
+
+ section {
+  padding: 0 0 30px;
+  @include breakpoint(mobile-both) { padding: 0 0 20px; }
+
+  h4 {
+   @include font-size(24);
+   text-align: center;
+   padding-bottom: 5px;
+   border-bottom: 2px solid #000;
+   margin-bottom: 5px;
+   @include breakpoint(mobile-both) { @include font-size(20); }
+  }
+
+  &.order-category h4 {
+   border-bottom: 0;
+   margin-bottom: 2px;
+  }
+
+ }
+
+ a.btn {
+  padding: 0.75em 0 0.5em;
+  width: 100%;
+  @include breakpoint(mobile-both) {
+   height: 40px; 
+   padding: 0;
+  }   
+
+  h4 {
+   @include font-size(24);
+   padding: 0;
+   border: 0;
+   margin: 0;
+   color: $light-text;
+   @include breakpoint(mobile-both) {
+    height: 40px;
+    line-height: 40px;
+    @include breakpoint(mobile-both) { @include font-size(20); }
+   }    
+  }
+
+ } 
+
+ li.order-wait-time p {
+  text-align: center;
+  color: $alert-color;
+  font-weight: bold;
+  // padding: 8px 0;
+ }
+
+ .nutrition-facts {
+  padding: 7px 0 5px;
+  border: 0;
+  border-bottom: 2px solid $heading-color;
+ } 
+
+}
+
+/* Order Sidebar Header
+==============================================================*/
+
+.order-header {
+ text-align: center;
+
+ img {
+  width: 70%;
+  max-width: 200px;
+ }
+
+ h4 {
+  @include font-size(24);
+  // text-transform: uppercase;
+  @include martopbot(5,0);
+ }
+
+ a:hover h4 { color: $heading-color; }
+
+ .nav-inline ul {
+  line-height: 1.0;
+  padding: 15px 0 20px;
+  @include breakpoint(mobile-both) { padding-top: 0; }
+
+  li {
+   line-height: 1.0;
+
+   a { padding: 0; }
+
+  }
+
+ }
+
+}
+
+/* Order Sidebar Line Items
+==============================================================*/
+
+.order-list {
+
+ li {
+  line-height: 1.0;
+  padding: 3px 0;
+  @include clearfix;
+
+  p {
+   height: 1.75em;
+   line-height: 1.75em;
+   padding: 0;
+   margin: 0;
+   width: auto;
+  }
+
+  label + p {
+   float: right;
+   text-align: right;
+  }
+
+  &.order-total-row {
+   font-weight: bold;
+   color: $heading-color;
+   border-top: 1px solid $heading-color;
+   border-bottom: 3px double $heading-color !important;
+
+   p { float: right !important; }
+
+  }
+
+ }
+
+}
+
+.order-details .order-list {
+
+ > li {
+  padding: 5px 0;
+  border-bottom: 1px solid #ddd;
+
+  p {
+   float: left;
+   overflow: hidden;
+  }
+
+ }
+
+ .order-menu-item {
+  width: 70%;
+ }
+
+ .order-delete {
+  width: 10%;
+  text-align: center;
+
+  a {
+   display: block;
+   width: 100%;
+   height: 100%;
+   @include font-size(11);
+   padding-top: 1px;
+  }
+
+ } 
+
+ .order-price {
+  width: 20%;
+  text-align: right;
+ }
+
+ &.checkout-list .order-price, .olo-change & .order-price {
+  width: 30%;
+ }
+
+ .order-option-items {
+  float: left;
+  width: 100%;
+  padding: 0px 0 2px 15px;
+
+  > li {
+   // padding: 3px 0;
+   @include font-size(13);
+  }
+
+ }
+
+ .order-made_for {
+  padding: 3px 0 3px 15px;
+  @include font-size(13);
+  line-height: 1.0;
+ } 
+
+}
+
+.olo-menu .order-details .order-list > li:nth-last-child(3) { 
+ border-bottom: 0;
+}
+
+.olo-checkout .order-details .order-list > li:nth-last-child(2) { 
+ border-bottom: 0;
+}
+
+.order-empty {
+ padding: 8px 0 15px;
+ text-align: center;
+ color: $error-color;
+}
+
+/* Order Sidebar Forms
+==============================================================*/ 
+
+.sidebar-order {
+
+ label, input[type="text"], .select-wrapper {
+  height: 1.9em;
+  line-height: 1.9em;
+  padding: 0;  
+  margin: 0;
+  width: auto;
+ }
+
+ input[type="text"], textarea, .select-wrapper {
+  background-color: #fff;
+  border: 1px solid #ddd;
+ }  
+
+ label {
+  float: left;
+ }
+
+ input[type="text"] {
+  float: right;
+  padding-left: 0.3em;
+ }
+
+ .select-wrapper {
+  float: right;
+  width: 100px;
+
+  select { 
+   height: 1.75em;
+   line-height: 1.75em;
+   padding: 0 0 0 0.3em;
+   width: 125px;
+   background: url(img/dropdown-arrow_100x50.png) 70px 5px no-repeat #fff;
+   @include bg-size(24px 12px);
+
+   &:focus {
+    background-position: 70px 5px;
+   }
+
+  }
+
+ }
+
+}
+
+// Options Wizard Form Customizations
+
+.order-wizard-checkout {
+
+ .made-for {
+  float: left;
+  width: 100%;
+  margin-bottom: 0px;
+
+  label {
+   width: 50%;
+  }
+
+  input[type="text"] {
+   width: 50%;
+   padding-left: 0.5em;
+  }
+
+ }
+
+ label {
+  width: 100%;
+ }
+
+ textarea { 
+  width: 100%;
+  height: 4em;
+  padding: 0.5em;
+  margin: 5px 0 30px;
+ }
+
+ a.btn {
+  margin-bottom: 15px;
+ }
+
+ p {
+  text-align: center;
+ }
+
+}

@@ -1,0 +1,723 @@
+/* General styles for the modal */
+
+/* 
+Styles for the html/body for special modal where we want 3d effects
+Note that we need a container wrapping all content on the page for the 
+perspective effects (not including the modals and the overlay).
+*/
+
+$modal-transit: 0.3s;
+
+.md-perspective,
+.md-perspective body {
+ height: 100%;
+ // overflow: hidden;
+}
+
+.md-perspective body  {
+ @include perspective(600px);
+}
+
+.md-trigger {
+ cursor: pointer;
+}
+
+.md-modal {
+ position: fixed;
+ top: 50%;
+ left: 50%;
+ width: 50%;
+ max-width: 720px;
+ min-width: 300px;
+ height: auto;
+ max-height: 100%;
+ z-index: 10002;
+ visibility: hidden;
+ @include backface(hidden);
+ @include translateXY(-50%, -50%);
+ @include breakpoint(tablet)      { width: 70%; }
+ @include breakpoint(mobile-both) { width: 90%; }
+}
+
+.md-show {
+ visibility: visible;
+}
+
+.md-overlay {
+ position: fixed;
+ width: 100%;
+ height: 100%;
+ overflow-y: scroll;
+ visibility: hidden;
+ top: 0;
+ left: 0;
+ z-index: 10001;
+ opacity: 0;
+ @include black-overlay(0.5);
+ @include transition(all, $modal-transit, ease);
+}
+
+.md-show ~ .md-overlay {
+ opacity: 1;
+ visibility: visible;
+}
+
+html .md-polyfill-show .md-overlay.activeoverlay {
+ display: block;
+ opacity: 1;
+ visibility: visible;
+}
+
+/* Content styles */
+.md-content {
+ background: #fff;
+ @include clearfix;
+ position: relative;
+ @include border-radius(3px);
+ margin: 0 auto;
+}
+
+.md-content header {
+ text-align: center;
+ padding: 3%;
+ background: $bg-color-2;
+ border-radius: 3px 3px 0 0;
+ @include breakpoint(mobile) { padding: 5% 15%; }
+
+ h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0;
+ }
+
+}
+
+.md-content form {
+ padding: 5%;
+
+ input[type="submit"] {
+  width: 40%;
+  margin: 10px 30% 0;
+ } 
+
+ select[multiple] {
+  min-height: 6em;
+ }
+
+}
+
+.md-body {
+ margin: 3% 5% 5%;
+ @include clearfix;
+ @include font-size($size-small);
+}
+
+.md-close {
+ position: absolute;
+ z-index: 2500;
+ display: block;
+ top: 12px;
+ right: 12px;
+ width: 30px;
+ height: 30px;
+ padding: 0;
+ border: 0;
+ @include font-size(24);
+ line-height: 24px;
+ color: $link-color;
+ background: none;
+ cursor: pointer;
+ @include breakpoint(mobile) {
+  top: 6px;
+  right: 6px; 
+ }
+
+ &:hover, &:active {
+  background: none;
+  border: 0px;
+  color: #000;
+ }
+
+}
+
+.md-msg {
+ color: $alert-color !important;
+ padding-top: 15px;
+}
+
+.modal-footnote {
+ text-align: center;
+ @include font-size($size-x-small);
+ margin: 15px auto 0;
+}
+
+/* Form Modals
+==============================================================*/
+
+// For modals with forms, set the z-index to -1 so that it doesn't interfere with form fields
+// on the page when the modal is hidden (results in loss of the scale down effect )
+.md-modal.modal-form {
+ z-index: -1;
+}
+
+.md-show.modal-form {
+ z-index: 10002;
+}
+
+/* Help Modals
+==============================================================*/
+
+.md-modal.modal-help {
+ width: 80%;
+ max-width: 800px;
+ max-height: 90%;
+ overflow-y: scroll; // This must be on the original state in order to allow for transition to occur
+ @include breakpoint(mobile-both) { max-height: 80%; }
+
+ &.md-show {
+  -webkit-overflow-scrolling: touch; // This must be on .md-show so that scrolling of modals doesn't cover the scrolling of the page itself
+ } 
+
+ .md-body {
+  margin: 3% 5% 4%;
+
+  p {
+   margin-bottom: 15px;
+   &:last-child { margin-bottom: 0; }
+  }
+
+ }
+
+}
+
+/* Help Modals
+==============================================================*/
+
+.md-modal.modal-summary {
+ width: 80%;
+ max-width: 800px;
+ max-height: 90%;
+ overflow-y: scroll; // This must be on the original state in order to allow for transition to occur
+ @include breakpoint(mobile-both) { max-height: 80%; }
+
+ &.md-show {
+  -webkit-overflow-scrolling: touch; // This must be on .md-show so that scrolling of modals doesn't cover the scrolling of the page itself
+ }
+
+ .md-content header {
+  padding: 20px;
+  
+  h4 { margin-bottom: 5px; }
+
+ }
+
+ .md-body {
+  margin: 25px 25px 20px;
+ }
+
+ ul.grid {
+ // padding-bottom: 5px;
+
+ > li {
+  padding-bottom: 0;
+ }
+
+}
+
+ ul.grid, .summary-items {
+  margin-bottom: 30px;
+ }
+
+ p {
+  @include font-size($size-x-small);
+  margin-bottom: 5px;
+  &:last-child { margin-bottom: 0; }
+ }
+
+ p.summary-title {
+  float: left;
+  width: 100%;
+  color: $heading-color;
+  line-height: 1.0;
+  font-weight: bold;
+  @include font-size($size-small);
+  padding: 0 0 5px;
+  border-bottom: 1px solid $line-color;
+  margin: 0 0 5px;
+ }
+
+ p + p.summary-title {
+  padding-top: 10px;
+ } 
+
+ p.summary-instructions {
+  width: 200%;
+ }
+
+ table {
+  float: left;
+  width: 100%;
+ }
+
+ .summary-totals td { padding: 0; }
+
+ .summary-items {
+
+  tr {
+   border: 0;
+  }
+  
+  td { 
+   width: 8%; 
+   vertical-align: top; 
+   padding-bottom: 10px;
+   border-bottom: 0;
+  }
+  
+  td.summary-item { 
+   width: 50%; 
+   
+   p { 
+    margin-bottom: 0;
+    font-weight: bold;
+   }
+
+   ul { 
+    list-style: disc outside;
+    margin-left: 15px;
+    width: 185%;
+
+    li, p { 
+     @include font-size(13);
+    }
+
+   }
+
+  }
+  
+  td.summary-price { width: 13%; }
+ 
+ }
+
+}
+
+
+/* Menu Item Modals
+==============================================================*/
+
+.modal-menu-item {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;  
+ max-width: 100%;
+ min-width: 0;
+ height: 100%;
+ max-height: 100%;
+ margin-bottom: 5%;
+ overflow-y: scroll;
+ @include translateXY(0%, 0%);
+
+ &.md-show {
+  -webkit-overflow-scrolling: touch;
+ }
+
+}
+
+.modal-menu-item .md-close {
+ width: 40px;
+ height: 40px;
+ line-height: 40px;
+ top: 5px;
+ right: 5px;
+ @include font-size(24);
+ text-align: center;
+ color: $error-color;
+
+ &:hover, &:active {
+  color: $heading-color;
+ }
+
+}
+
+.modal-menu-item .md-content {
+ position: relative;
+ z-index: 2000;
+ margin: 2.5% auto;
+ width: 70%;
+ max-width: 720px;
+ @include breakpoint(tablet-max)  { 
+  width: 100%; 
+  max-width: 100%; 
+  min-height: 100%; 
+  margin: 0; 
+  @include border-radius(0px); 
+ }
+
+ form {
+  padding: 0;
+ }
+
+ input[type="submit"] {
+  cursor: pointer;
+  width: 40%;
+  padding: 0;
+  margin: 0 30%;
+  @include breakpoint(mobile-land) { width: 50%; margin: 0 25%; }  
+  @include breakpoint(mobile)      { width: 60%; margin: 0 20%; }
+ } 
+
+ h4 { 
+  margin: 0 0 6px -2px;
+  @include font-size(28);
+ }
+
+ p { margin-bottom: 0; }
+
+ .md-body {
+  margin: 4%;
+ }
+
+ .md-top {
+  float: left;
+  width: 100%;
+  margin-bottom: 5px;
+
+  h4 { 
+   float: left;
+   margin-bottom: 0;
+  }
+
+  .md-name { 
+   width: 75%;
+  }
+
+  .md-total-price {
+   width: 25%;
+   text-align: right;
+  }
+
+ }
+
+ .md-bottom { 
+  float: left;
+  width: 100%;
+  margin-top: 25px; 
+ }
+
+ p { 
+  @include font-size($size-x-small); 
+  line-height: 1.6;
+  margin-bottom: 0.3em;
+ }
+
+ p.md-cancel {
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 0;
+  line-height: 1.0;
+  text-align: center;
+
+  a {
+   display: block;
+   width: 100%;
+   @include breakpoint(mobile-both) { padding: 10px 0; }
+  }
+
+ } 
+
+ .md-desc {  }
+
+ .md-allergens { 
+  font-style: italic;
+  color: $error-color;
+ }
+
+ .md-options {
+  float: left;
+  width: 100%;
+  padding: 2% 0 0;
+
+  .md-option-group {
+   float: left;
+   width: 100%;
+   @include padtopbot(0,3);
+   border-bottom: 1px solid $line-color;
+   @include martopbot(0,12);
+   @include breakpoint(mobile)      { border: 0; margin: 2px; }
+
+   p {
+    @include inline-block;
+    width: auto;
+    vertical-align: baseline;
+    line-height: 1.0;
+    @include breakpoint(mobile)      { display: block; line-height: 1.5; }
+   }    
+
+   p.md-option-group-name {
+    @include font-size($size-small);
+    color: $heading-color;
+    font-weight: bold;
+    @include breakpoint(tablet)      { @include font-size($size); }
+    @include breakpoint(mobile-land) { @include font-size($size); }
+    @include breakpoint(mobile)      { width: 100%; margin-bottom: 0px; @include font-size($size); }
+   }
+
+  }
+
+  .md-option-group-max-warning, .md-option-group-min-warning {
+   display: none;
+   float: left;
+   width: 100%;
+   padding-bottom: 7px;
+   margin-top: -5px;
+   color: $error-color;
+  }
+
+  ul.grid-2 {
+   margin: 0 -1.5%;
+   margin-bottom: 2%;
+
+   > li {
+    padding: 0 1.5%; 
+    padding-bottom: 0;
+    line-height: 1.0;
+    @include breakpoint(tablet)      { width: 50%; }
+    @include breakpoint(mobile-land) { width: 50%; }
+    @include breakpoint(mobile)      { width: 100%; }
+   }
+  
+  }
+
+  .checkbox-label p, .radio-label p {
+   @include font-size($size-x-small);
+   padding-top: 4px;
+   // @include breakpoint(mobile-both) { @include font-size($size-small); }
+   // @include breakpoint(tablet)      { @include font-size($size-small); }
+  }
+
+  input[type=checkbox]:checked + .checkbox-label {
+   p { color: $heading-color; }
+  }
+
+  input[type="text"], textarea {
+   width: 100%;
+   @include font-size($size-x-small);
+  }
+
+  input[type="text"] {
+   margin-bottom: 4.5%;
+  } 
+
+ }
+
+} // .modal-menu-item .md-content
+
+// Image at top of modal
+.md-image {
+ position: relative;
+ z-index: 1;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 300px;
+ @include border-top-radius(3px);
+ @include border-right-radius(3px);
+ background: center center no-repeat fixed;  
+ background-attachment: scroll;
+ @include bg-size(100% auto);
+ @include breakpoint(tablet)      { height: 300px; @include border-radius(0px); }
+ @include breakpoint(mobile-land) { height: 150px; @include border-radius(0px); }
+ @include breakpoint(mobile)      { height: 200px; @include border-radius(0px); }
+
+ img {
+  position: relative;
+  z-index: 2;
+ }
+
+ form input[type="submit"] {
+  float: none;
+  position: absolute;
+  z-index: 3;
+  bottom: 15px;
+  left: 0px;
+  @include box-shadow(0, 0, 15px, 0, rgba(0, 0, 0, 0.5));
+ }
+
+}
+
+.md-image.no-image {
+ height: 25px;
+
+ form input[type="submit"] {
+  top: 25px;
+  bottom: auto;
+  @include box-shadow-none;
+  @include breakpoint(mobile-both) { top: 13px; }
+ }
+
+}
+
+.modal-menu-item .md-nutrition {
+ width: 300px;
+ padding: 25px;
+ margin: 0 auto;
+ background: #fff;
+ @include border-radius(3px);
+}
+
+/* Modal
+==============================================================*/
+
+.md-modal.modal-image {
+
+ .md-content {
+  margin: 2%;
+  width: 400px;
+  @include breakpoint(tablet)      { width: 300px; min-height: 0; margin: 25px; }
+  @include breakpoint(mobile-land) { width: 300px; margin: 20px; }
+  @include breakpoint(mobile)      { width: 100%; margin: 0; }
+
+  .md-body {
+   margin: 0;
+   padding: 4%;
+   @include border-radius(6px);
+   @include breakpoint(tablet-max) { padding: 15px; }
+   @include breakpoint(mobile)     { min-height: 100%; @include border-radius(0px); }
+
+   h4 {
+    @include breakpoint(tablet-max) { width: 250px; }
+   }
+
+  }
+
+ }
+
+ ~ .md-overlay {
+  background: center center no-repeat fixed;
+  @include bg-size(cover);
+ }
+
+ .nutrition-facts {
+  margin-top: 20px;
+ }
+
+}
+
+/* Dark Modals (black overlay background)
+==============================================================*/
+
+.md-modal.modal-dark {
+
+ .md-close {
+  color: $link-color;
+  &:hover, &:active { color: $light-text; }
+ }
+
+ .md-content {
+
+  header {
+   background: transparent;
+   padding-bottom: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6, p, p span, ul li, ol li, .nutri-bold {
+   color: $light-text;
+  }
+
+  .md-body {
+   @include black-overlay;
+   @include breakpoint(mobile-both) { background: none; }
+  }
+
+  .md-allergens { 
+    color: $error-color; 
+    margin-bottom: 0; 
+   }
+
+  .md-options {
+
+   > h4, > h5 {
+    border-bottom: 2px solid $light-text;
+   }
+
+   form { 
+
+    .md-option-group {
+
+     p span { color: $light-text; }
+
+    }
+
+    input[type=checkbox]:checked + .checkbox-label {
+     p { color: $link-color; }
+    }
+
+   }
+
+  }
+
+  .nutrition-facts {
+    
+   li.nutri-line-heavy, li.nutri-line-medium, li.nutri-line-light {
+    background: $light-text;
+   }
+
+  }  
+
+ }
+
+ ~ .md-overlay { 
+  @include breakpoint(mobile-both) { @include black-overlay(0.75); background: rgba(0, 0, 0, 0.9); }
+ }
+
+}
+
+/* Individual modal styles with animations & transitions
+==============================================================*/
+
+/* Effect 1: Fade in and scale up */
+
+.md-effect-1 {
+ 
+ .md-content, .md-sidebar, .md-close {
+  opacity: 0;
+  @include scale(0.7);
+  @include transition( all, $modal-transit, ease);
+ }
+
+}
+
+.md-show.md-effect-1 {
+
+ .md-content, .md-sidebar, .md-close {
+  opacity: 1;
+  @include scale(1.0);
+ }
+
+ ~ .st-pusher .st-content, ~ .st-menu {
+  // @include breakpoint(desktop) { @include blur(3px); };
+ }
+
+}
+
+/* Effect 12:  Background Image (fka "Just Me") */
+
+.md-effect-12 .md-content {
+ opacity: 0;
+ @include scale(0.8);
+ @include transition( all, $modal-transit, ease);
+}
+
+.md-show.md-effect-12 ~ .md-overlay {
+ z-index: 1000; 
+ @include bg-size(cover); 
+}
+
+.md-effect-12 .md-content h3,
+.md-effect-12 .md-content {
+ background: transparent;
+}
+
+.md-show.md-effect-12 .md-content {
+ opacity: 1;
+ @include scale(1.0);
+}
