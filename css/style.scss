@@ -100,21 +100,7 @@ h4{
 	color: $gray_m;
 	margin: 5px 0;
 }
-.half{
-	width: 50%;
-	float: left;
-	text-align: center;
-	img{
-		max-width: 100%;
-	}
-	@include breakpoint(mobile-both) {width: 100%; }
-	.bigger{
-		@include breakpoint(tablet-both) {width: 33.33%; }
-	}
-	.smaller{
-		@include breakpoint(tablet-both) {width: 66.66%; }
-	}
-}
+
 
 #basic_id{
 	display: block;
