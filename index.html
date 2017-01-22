@@ -88,6 +88,10 @@
 					}
 				});
 				
+				$("#burger-icon").click(function(){
+			    	$(this).parent().parent().toggleClass("open");
+			    });
+				
 				/*
 import mojs from 'mo-js';
 				'use strict';
@@ -206,28 +210,39 @@ $(function () { // wait for document ready
 					</div>
 					<div class="downloads wow fadeIn">
 						<a href="docs/IvoGregurec.vcf">vCard</a>
-						<a href="IvoGregurecCV.pdf">CV.pdf</a>
+						<a href="docs/IvoGregurecCV.pdf">CV.pdf</a>
 					</div>
 				</div>
 			</div>
 		</div>
 		<nav class="static">
-			<div class="wrapper">
-				<ul>
-					<li><a href="#">home</a></li>
-					<li><a href="#connect">connect</a></li>
-				</ul>
-			</div>
-		</nav>	
+	      	<div class="top-bar">
+	        	<div id="burger-icon">
+		        	<span class="line"></span>
+		        	<span class="line"></span>
+		        	<span class="line"></span>
+		        </div>
+		    </div>
+		    <ul class="main">
+	        	<li><a href="#about">About</a></li>
+	        	<li><a href="#web">Websites</a></li>
+				<li><a href="#icons">Launcher Icons</a></li>
+				<li><a href="#gui">GUI Elements</a></li>
+				<li><a href="#logos">Visual Identities</a></li>
+				<li><a href="#connect">Connect</a></li>
+	        </ul>
+	      
+	    </nav>
+		
 		<canvas id="canvas" width="120" height="190" style="position: fixed; top: 2px; left: -4px; display: none"></canvas>
 		<div class="wrapper">
 			<div class="text" id="about">
-				<p>Ivo is a both, a GUI designer and front-end developer. He has a bachelor's degree in informatics and master's degree in graphic design which helps him design web safe products or on the other side,  developing fully responsive web page based on a single size mockup. However most of the knowledge and skills he uses today came from the everyday research on various branch related blogs and <a href="http://stackoverflow.com/users/2689731/1gr3">stackoverflow</a>. 
+				<p>Ivo is both, a GUI designer and front-end developer. He has a bachelor's degree in informatics and master's degree in graphic design which helps him design web safe products or on the other side,  developing fully responsive web page based on a single size mockup. However most of the knowledge and skills he uses today came from the everyday research on various branch related blogs and <a href="http://stackoverflow.com/users/2689731/1gr3">stackoverflow</a>. 
 				</p>
-				<p>Since the beginning of 2014 he's been a <a href="https://www.toptal.com/designers/resume/ivo-gregurec">Toptal member</a> and colaborating with back-end developers and other designers from all over the world, especially USA.</p>
+				<p>Since the beginning of 2014 he's been a <a href="https://www.toptal.com/designers/resume/ivo-gregurec">Toptal member</a> and collaborating with back-end developers and other designers from all over the world, especially USA.</p>
 			</div>
 		</div>
-		<div id="hs_holder" class="webdesign"> <!-- class= iPad, MBA, iMac, etc. ... -->
+		<div id="webdesign" class="hs_holder"> <!-- class= iPad, MBA, iMac, etc. ... -->
 			<div class="wrapper"><h3 id="web" style="color:white">Recent websites*</h3></div>
 			<div id="hs_container" class="wrapper web"> <!-- class= iOS6, iOS7, Metro, etc.. -->
 				<ul class="wow zoomIn">
@@ -285,7 +300,7 @@ $(function () { // wait for document ready
 		</div>
 		
 		<div class="wrapper"><h3 id="icons">Launcher icons</h3></div>
-		<div id="hs_holder" class="full"> <!-- class= iPad, MBA, iMac, etc. ... -->
+		<div id="full" class="hs_holder"> <!-- class= iPad, MBA, iMac, etc. ... -->
 			<!-- <img id="plane" src="img/comet.gif" style="margin-top:300px"> -->
 			<div id="hs_container" class="wrapper original" style="/*background-image: url(<?php echo gimmie_bg()?>)*/"	> <!-- class= iOS6, iOS7, Metro, etc.. -->
 				<ul class="wow zoomIn">
@@ -357,8 +372,8 @@ $(function () { // wait for document ready
 			</div>
 		</div>
 		
-		<div class="wrapper" style=""><h3 id="logos">GUI elements</h3></div>
-		<div id="hs_holder" class=" "> <!-- class= iPad, MBA, iMac, etc. ... -->
+		<div class="wrapper" style=""><h3 id="gui">GUI elements</h3></div>
+		<div id="" class="hs_holder"> <!-- class= iPad, MBA, iMac, etc. ... -->
 			<div id="hs_container" class="wrapper print"> <!-- class= iOS6, iOS7, Metro, etc.. -->
 				<div class="wow fadeInLeft half smaller">
 					<img src="img/inetecEmergency.png">
@@ -370,7 +385,7 @@ $(function () { // wait for document ready
 		</div>
 		
 		<div class="wrapper"><h3 id="logos">Visual identities</h3></div>
-		<div id="hs_holder" class="poster"> <!-- class= iPad, MBA, iMac, etc. ... -->
+		<div id="poster" class="hs_holder"> <!-- class= iPad, MBA, iMac, etc. ... -->
 			<div id="hs_container" class="wrapper print"> <!-- class= iOS6, iOS7, Metro, etc.. -->
 				<ul>
 					<li><a href="img/sandwicons.jpg" class="fancybox svg-inline">
