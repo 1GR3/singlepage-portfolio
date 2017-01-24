@@ -88,8 +88,8 @@
 					}
 				});
 				
-				$("#burger-icon").click(function(){
-			    	$(this).parent().parent().toggleClass("open");
+				$("#burger-icon, #burger-icon li a").click(function(){
+			    	$("nav#main").toggleClass("open");
 			    });
 				
 				/*
@@ -215,7 +215,7 @@ $(function () { // wait for document ready
 				</div>
 			</div>
 		</div>
-		<nav class="static">
+		<nav class="static" id="main">
 	      	<div class="top-bar">
 	        	<div id="burger-icon">
 		        	<span class="line"></span>
@@ -234,7 +234,7 @@ $(function () { // wait for document ready
 	      
 	    </nav>
 		
-		<canvas id="canvas" width="120" height="190" style="position: fixed; top: 2px; left: -4px; display: none"></canvas>
+		<canvas id="canvas" width="120" height="190" style="position: fixed; top: 32px; left: -4px; display: none"></canvas>
 		<div class="wrapper">
 			<div class="text" id="about">
 				<p>Ivo is both, a GUI designer and front-end developer. He has a bachelor's degree in informatics and master's degree in graphic design which helps him design web safe products or on the other side,  developing fully responsive web page based on a single size mockup. However most of the knowledge and skills he uses today came from the everyday research on various branch related blogs and <a href="http://stackoverflow.com/users/2689731/1gr3">stackoverflow</a>. 

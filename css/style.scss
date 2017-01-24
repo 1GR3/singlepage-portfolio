@@ -160,7 +160,7 @@ h4 {
                 height: 50px;
                 -webkit-transform: translate3d(0,0,0);
                 position: fixed;
-                top: 10px;
+                top: 40px;
                 left: 10px;
                 margin: 0;
                 -webkit-backface-visibility: hidden;
@@ -233,7 +233,7 @@ h4 {
         }
     }
 }
-nav{
+nav#main{
 	border-top:1px solid $gray_l;
 	border-bottom:1px solid $gray_l; 
 	ul{
@@ -252,8 +252,11 @@ nav{
 
 	@include breakpoint(tablet-max) {
 	    width: 100%;
+	    position: fixed;
+	    top: 0;
+	    z-index: 2000;
 	    .top-bar {
-	        background: rgba(white,.5);
+	        background: rgba(white,.95);
 	        height: 35px;
 	        #burger-icon {
 	            padding: 5px;
@@ -283,13 +286,14 @@ nav{
 	        li {
 	            list-style: none;
 	            display: block;
-	            background: rgba(white,.5);
+	            background: rgba(white,.95);
 	            width: 100%;
 	            padding: 0 10px;
 	            box-sizing: border-box;
 	            height: 30px;
 	            line-height: 30px;
 	            -webkit-transition: all .5s ease-in-out;
+	            text-align: center;
 	            &:first-child {
 	                margin-top: 0;
 	            }
@@ -320,7 +324,7 @@ nav{
 	        }
 	        .main {
 	            li {
-	                background: rgba(white,.5) !important;
+	                background: rgba(white,.95) !important;
 	                &:nth-child(odd) {
 	                    -webkit-transform-origin: top;
 	                    -webkit-transform: perspective(500px) rotateX(0deg);
